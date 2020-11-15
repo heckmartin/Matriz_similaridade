@@ -8,6 +8,7 @@ import numpy as np
 import os
 import sys
 
+
 _EPS = 1e-14
 
 def simpleself(seq, subseq_len):

@@ -52,7 +52,9 @@ pl_density = [[0.0, 'rgb(230,240,240)'],
               [0.8, 'rgb(103,35,112)'],
               [0.9, 'rgb(82,20,69)'],
               [1.0, 'rgb(54,14,36)']]
-def arc_plot(diagonal, recorte = 43, arc_num = 20, arc_size = 0.33):
+
+# calculates the arc_plot from the found diagonal. Here cut is the divider to get the correct time in seconds (using 215 as the subsequence length in simpleself function). arc_num is the number of arcs to be presented and arc_size is the thickness of each arc.
+def arc_plot(diagonal, cut = 43, arc_num = 20, arc_size = 0.33):
     data = []
     tooltips = [] #list of strings to be displayed when hovering the mouse over the middle of the circle arcs
     xx = []
@@ -60,9 +62,9 @@ def arc_plot(diagonal, recorte = 43, arc_num = 20, arc_size = 0.33):
     
     diagonal_val = diagonal[:arc_num]
     for i in range(len(diagonal_val)):
-        diagonal_val[i][0][0] = diagonal_val[i][0][0]//recorte
-        diagonal_val[i][0][1] = diagonal_val[i][0][1]//recorte
-        diagonal_val[i][1]  = diagonal_val[i][1]//recorte
+        diagonal_val[i][0][0] = diagonal_val[i][0][0]//cut
+        diagonal_val[i][0][1] = diagonal_val[i][0][1]//cut
+        diagonal_val[i][1]  = diagonal_val[i][1]//cut
     diagonal_val.sort(key= lambda x:x[0][0])
     indices = []
     for i in range(len(diagonal_val)):
@@ -143,4 +145,4 @@ def arc_plot(diagonal, recorte = 43, arc_num = 20, arc_size = 0.33):
             margin=dict(t=80, b=110, l=10, r=10)    
             )
     fig = go.FigureWidget(data=data, layout=layout)
-    fig.show()
+    fig.write_image("arc_plot.png")
