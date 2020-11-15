@@ -7,6 +7,8 @@
  - **Jupyter notebook** (Optional, but recomended)
 
 ### Usage:
+To generate the similarity matrix used to compute the repetition you will need to provide the path to an audio file.
+
 Run ```Python Repetition_recognition.py <path to the desired track>```
 
-however it is recomended to use the provided notebook file for testing.
+However it is recomended to use the provided notebook file for testing.
